@@ -1,12 +1,20 @@
 
+import React from 'react';
+import ChessboardComponent from './components/Chessboard';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      Anti Chess
+      <h1>Anti-Chess</h1>
+      <div className='chess_cont'>
+        <ChessboardComponent />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
+
+
+

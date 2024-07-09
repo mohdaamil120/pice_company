@@ -1,0 +1,9 @@
+.App > h1{
+    display: flex;
+    justify-content: center;
+}
+
+.chess_cont{
+    display: grid;
+    place-content: center;
+}
