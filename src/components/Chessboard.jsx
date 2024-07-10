@@ -1,67 +1,63 @@
+import React, { useState } from "react";
+import { Chessboard as ReactChessboard } from "react-chessboard";
+import Game from "../gameLogic";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// import React, { useState } from 'react';
-// import { Chessboard } from 'react-chessboard';
+const Chessboard = () => {
+  const [game, setGame] = useState(new Game());
+  const [position, setPosition] = useState(game.position);
+  const [turn, setTurn] = useState(game.turn);
 
-// const ChessboardComponent = () => {
-//   const [position, setPosition] = useState('start');
+  const handlePieceDrop = (from, to) => {
+    const result = game.move(from, to);
+    setPosition({ ...game.position });
 
-//   const handleMove = (sourceSquare, targetSquare) => {
-//     console.log(`Move from ${sourceSquare} to ${targetSquare}`);
-//     // Add your custom logic here
-//   };
+    if (result.includes("Winner")) {
+      alert(result);
+      handleReset();
+      return;
+    }
 
-//   return (
-//     <Chessboard
-//       boardWidth={600}
-//       position={position}
-//       onPieceDrop={(sourceSquare, targetSquare) =>
-//         handleMove(sourceSquare, targetSquare)
-//       }
-//     />
-//   );
-// };
+    if (result !== "Move successful") {
+      toast.error(result, { autoClose: 2000 });
+    } else {
+      setTurn(game.turn);
+    }
+  };
 
-// export default ChessboardComponent;
+  const handleQuit = () => {
+    const winner = game.turn === "w" ? "Black" : "White";
+    alert(`Winner is ${winner}`);
+    handleReset();
+  };
 
-
-
-
-
-
-
-
-
-// src/components/Chessboard.jsx
-import React, { useState } from 'react';
-import { Chessboard } from 'react-chessboard';
-
-const ChessboardComponent = () => {
-  const [position, setPosition] = useState({
-    a1: 'wR', b1: 'wN', c1: 'wB', d1: 'wQ', e1: 'wK', f1: 'wB', g1: 'wN', h1: 'wR',
-    a2: 'wP', b2: 'wP', c2: 'wP', d2: 'wP', e2: 'wP', f2: 'wP', g2: 'wP', h2: 'wP',
-    a7: 'bP', b7: 'bP', c7: 'bP', d7: 'bP', e7: 'bP', f7: 'bP', g7: 'bP', h7: 'bP',
-    a8: 'bR', b8: 'bN', c8: 'bB', d8: 'bQ', e8: 'bK', f8: 'bB', g8: 'bN', h8: 'bR',
-  });
-
-  const handleMove = (sourceSquare, targetSquare) => {
-    setPosition((prevPosition) => {
-      const newPosition = { ...prevPosition };
-      newPosition[targetSquare] = newPosition[sourceSquare];
-      delete newPosition[sourceSquare];
-      return newPosition;
-    });
-    console.log(`Move from ${sourceSquare} to ${targetSquare}`);
+  const handleReset = () => {
+    const newGame = new Game();
+    setGame(newGame);
+    setPosition(newGame.position);
+    setTurn(newGame.turn);
   };
 
   return (
-    <Chessboard
-    boardWidth={600}
-      position={position}
-      onPieceDrop={(sourceSquare, targetSquare) =>
-        handleMove(sourceSquare, targetSquare)
-      }
-    />
+    <div>
+      <h2>Current Turn: {turn === "w" ? "White" : "Black"}</h2>
+      <button onClick={handleQuit}>Quit</button>
+      <button onClick={handleReset}>Reset</button>
+      <ReactChessboard
+        position={position}
+        onPieceDrop={handlePieceDrop}
+        boardWidth={400}
+        customBoardStyle={{
+          borderRadius: "4px",
+          boxShadow: `0 5px 15px rgba(0, 0, 0, 0.5)`,
+          border: "2px solid #333",
+          backgroundColor: "#f0d9b5",
+        }}
+      />
+      <ToastContainer />
+    </div>
   );
 };
 
-export default ChessboardComponent;
+export default Chessboard;

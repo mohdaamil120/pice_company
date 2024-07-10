@@ -1,36 +1,13 @@
 
-// import React from 'react';
-// import ChessboardComponent from './components/Chessboard';
-// import './App.css';
-
-// const App = () => {
-//   return (
-//     <div className="App">
-//       <h1>Anti-Chess</h1>
-//       <div className='chess_cont'>
-//         <ChessboardComponent />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default App;
-
-
-
-
-// src/App.js
-import React from 'react';
-import ChessboardComponent from './components/Chessboard';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Chessboard from "./components/Chessboard";
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Anti-Chess</h1>
-      <div className='chess_cont'>
-         <ChessboardComponent />
-      </div>
+      <h1>Anti-Chess Game</h1>
+      <Chessboard />
     </div>
   );
 };
