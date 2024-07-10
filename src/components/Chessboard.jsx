@@ -41,7 +41,7 @@ const Chessboard = () => {
 
   return (
     <div>
-      <h2>Current Turn: {turn === "w" ? "White" : "Black"}</h2>
+      
       <button onClick={handleQuit}>Quit</button>
       <button onClick={handleReset}>Reset</button>
       <ReactChessboard
@@ -55,6 +55,7 @@ const Chessboard = () => {
           backgroundColor: "#f0d9b5",
         }}
       />
+      <h2>Current Turn: {turn === "w" ? "White" : "Black"}</h2>
       <ToastContainer />
     </div>
   );
