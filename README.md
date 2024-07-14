@@ -41,7 +41,7 @@ npm start
 
 
 ## Deployed App
-Frontend: [React App](https://quest-labs-liart.vercel.app/)
+Frontend: [React App](https://pice-anti-chess.vercel.app/)
 
 ## Directory Structure
 ```plaintext
