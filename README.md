@@ -10,6 +10,36 @@ Anti-chess is a variant of chess with the following rules:
 - Capturing is mandatory:
 
 
+## Technology Stack
+List and provide a brief overview of the technologies used in the project.
+
+- React
+- HTML5
+- CSS3
+- JavaScript
+
+
+## Installation & Getting started
+Detailed instructions on how to install, configure, and get the project running.
+
+Clone the repository: git clone https://github.com/yourusername/your-repo.git
+Navigate to the project directory: cd your-repo
+Install dependencies: npm install
+Start the frontend: npm start
+bash
+npm install my-project
+cd my-project
+npm start
+
+# Screenstots
+
+###  ( ChessBoard )
+<img src="screenshots\chess.png"/>
+
+
+
+
+
 ## Deployed App
 Frontend: [React App](https://quest-labs-liart.vercel.app/)
 
